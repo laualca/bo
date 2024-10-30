@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bodega de Inventario - COPECO</title>
+
+    {% load static %}
+
+    <!-- Bootstrap -->
+    <link href="{% static 'BodegaInventarioApp/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+
+    <!-- Styles -->
+    <link href="{% static 'BodegaInventarioApp/css/gestion.css' %}" rel="stylesheet">
+</head>
+
+<body>
+    <h1 class="site-heading text-center text-white d-none d-lg-block">
+        <span class="site-heading-lower">Bodega de Inventario - COPECO</span>
+    </h1>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none" href="{% url 'Inicio' %}">COPECO</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item {% if request.path == '/' %}active{% endif %} px-lg-4">
+                        <a class="nav-link text-uppercase text-expanded" href="{% url 'Inicio' %}">Inicio</a>
+                    </li>
+                    <li class="nav-item {% if request.path == '/inventario/' %}active{% endif %} px-lg-4">
+                        <a class="nav-link text-uppercase text-expanded" href="{% url 'Inventario' %}">Inventario</a>
+                    </li>
+                    <li class="nav-item  {% if request.path == '/mantenimiento/' %}active{% endif %} px-lg-4">
+                        <a class="nav-link text-uppercase text-expanded" href="{% url 'Mantenimiento' %}">Mantenimiento</a>
+                    </li>
+                    <li class="nav-item {% if request.path == '/reportes/' %}active{% endif %} px-lg-4">
+                        <a class="nav-link text-uppercase text-expanded" href="{% url 'Reportes' %}">Reportes</a>
+                    </li>
+                    <li class="nav-item {% if request.path == '/transacciones/' %}active{% endif %} px-lg-4">
+                        <a class="nav-link text-uppercase text-expanded" href="{% url 'Transacciones' %}">Transacciones</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+ <!-- Section -->
+<!--     <section class="page-section clearfix">
+        <div class="container">
+            <div class="intro">
+                <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{% static 'BodegaInventarioApp/img/principal.jpg' %}" alt="Bodega COPECO">
+                <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+                    <h2 class="section-heading mb-4">
+                        <span class="section-heading-upper">Gestión Eficiente</span>
+                        <span class="section-heading-lower">Control de Inventario</span>
+                    </h2>
+                    <p class="mb-3">Optimización de los recursos y productos con un sistema eficiente para la gestión de inventarios en COPECO.</p>
+                </div>
+            </div>
+        </div>
+    </section> -->  
+
+    <!-- contenido que tiende a cambiar -->
+    {% block content %}
+
+
+
+    {% endblock %}
+
+    <!-- Footer -->
+    <footer class="footer text-faded text-center py-5">
+        <div class="container">
+            <p class="m-0">© COPECO - Bodega de Inventario 2024</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap -->
+    <script src="{% static 'BodegaInventarioApp/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'BodegaInventarioApp/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!-- <html>  
+<head>
+    <title>Inventario</title>
+</head>
+<body>
+    <h1>Inventario</h1>
+    <p>Esta es la página de inventario de la aplicación de Bodega Inventario.</p>
+</body>
+</html>
+-->    
+{% extends "BodegaInventarioApp/base.html" %}
+
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center text-white">Inventario</h2>
+    <table class="table table-bordered table-striped bg-dark text-white">
+        <thead class="thead-dark">
+            <tr>
+                <th>Código</th>
+                <th>Nombre</th>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Cantidad</th>
+                <th>Descripción</th>
+                <th style="width: 200">Fecha</th>
+                <th style="width: 200">Precio (L)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in inventario %}
+            <tr>
+                <td>{{ item.id_codigoinv }}</td>
+                <td>{{ item.nombre }}</td>
+                <td>{{ item.marca }}</td>
+                <td>{{ item.modelo }}</td>
+                <td>{{ item.cantidad }}</td>
+                <td style="width: 200px;">{{ item.descripcion }}</td>
+                <td style="width: 200px;">{{ item.fecha }}</td>
+                <td style="width: 200px;">L. {{ item.precio }}</td> <!-- Formato de precio en lempiras -->
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
