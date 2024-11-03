@@ -8,5 +8,4 @@ from django.conf.urls.static import static
 urlpatterns = [
     
     path('', views.mantenimiento, name='Mantenimiento'),
-    
 ]
