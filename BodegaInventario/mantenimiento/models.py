@@ -20,5 +20,6 @@ class Meta:
     verbose_name_plural = 'mantenimientos'
 #Funcion para retornar el titulo del mantenimiento
     def __str__(self):
-        return self.titulo
+        texto = "{0} ({1})"
+        return texto.format(self.titulo, self.fecha_mante)
     
