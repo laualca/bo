@@ -13,33 +13,86 @@
 {% load static %}
 
 {% block content %}
-    <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
-        <h1 style="color: white; padding: 10px;">Mantenimiento</h1>
-        <div class="table-responsive py-2">
-            <table class="table table-striped" style="background-color: white;">
-                <thead style="background-color: white; color: black;">
-                    <tr>
-                        <th>ID</th>
-                        <th>Título</th>
-                        <th>Descripción</th>
-                        <th>Fecha de Mantenimiento</th>
-                        <th>Responsable</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for mantenimiento in mantenimientos %}
-                    <tr style="color: black; background-color: white;">
-                        <td>{{ mantenimiento.id_mantenimiento }}</td>
-                        <td>{{ mantenimiento.titulo }}</td>
-                        <td>{{ mantenimiento.descripcion }}</td>
-                        <td>{{ mantenimiento.fecha_mante }}</td>
-                        <td>{{ mantenimiento.responsable_mante }}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+<div class="container">
+    {% if messages %}
+        {% for message in messages %}
+            <div class="aler alert-success">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+    <!-- Centrar el título -->
+    <h1 class="text-center text-white py-3">Mantenimiento</h1>
+    
+    <!-- Formulario centrado y con fondo blanco -->
+    <form class="w-75 mx-auto shadow p-4 mb-4" method="POST"  action="{% url 'guardar'%}" style="background-color: white; border-radius: 8px;">
+        {% csrf_token %}
+        
+        <!-- Campo Título -->
+        <div class="form-group mb-3">
+            <label for="titulo">Título:</label>
+            <input type="text" id="titulo" name="titulo" class="form-control" required>
         </div>
 
+        <!-- Campo Fecha de Mantenimiento -->
+        <div class="form-group mb-3">
+            <label for="fecha_mante">Fecha de Mantenimiento:</label>
+            <input type="date" id="fecha_mante" name="fecha_mante" class="form-control" required>
+        </div>
+
+        <!-- Campo Responsable -->
+        <div class="form-group mb-3">
+            <label for="responsable_mante">Responsable:</label>
+            <input type="text" id="responsable_mante" name="responsable_mante" class="form-control" required>
+        </div>
+
+        <!-- Campo Descripción -->
+        <div class="form-group mb-3">
+            <label for="descripcion">Descripción:</label>
+            <textarea id="descripcion" name="descripcion" class="form-control" required></textarea>
+        </div>
+        
+        <!-- Botón Guardar -->
+        <div class="text-center">
+            <input type="submit" value="Guardar" class="btn btn-primary">
+        </div>
+    </form>
+    
+    <!-- Tabla de mantenimientos -->
+    <div class="table-responsive py-2">
+        <table class="table table-info text-center" style="background-color: white;">
+            <thead style="background-color: black; color: white;">
+                <tr>
+                    <th>ID</th>
+                    <th>Título</th>
+                    <th>Descripción</th>
+                    <th>Fecha de Mantenimiento</th>
+                    <th>Responsable</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for mantenimiento in mantenimientos %}
+                <tr style="color: black; background-color: white;">
+                    <td>{{ mantenimiento.id_mantenimiento }}</td>
+                    <td>{{ mantenimiento.titulo }}</td>
+                    <td>{{ mantenimiento.descripcion }}</td>
+                    <td>{{ mantenimiento.fecha_mante }}</td>
+                    <td>{{ mantenimiento.responsable_mante }}</td>
+                    <td>
+                    <form action="{% url 'eliminar' mantenimiento.id_mantenimiento %}" method="POST">
+                        {% csrf_token %}
+                        <td><button class="btn btn-danger">Eliminar</button></td>
+                    </form>
+                    </td>
+                    <td>
+                        <form action="{% url 'editar' mantenimiento.id_mantenimiento %}" method="POST">
+                            {% csrf_token %}
+                            <td><button class="btn btn-warning">Editar</button></td>
+                        </form>
+                        </td>
+                    </tr>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
 </div>
 {% endblock %}

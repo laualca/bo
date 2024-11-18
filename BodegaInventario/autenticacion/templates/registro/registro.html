@@ -1,0 +1,19 @@
+{% extends "BodegaInventarioApp/base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<form method="POST" action="" sytle="color: white;" >
+    {% csrf_token %}
+    <div style="color: white;">
+    {{form}}
+    </div>
+
+    <button type="submit" class="btn btn-success">Registrarse</button>
+
+
+
+{% endblock %}
+
+

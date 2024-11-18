@@ -15,7 +15,7 @@ def transacciones(request):
     return render(request, 'BodegaInventarioApp/transacciones.html')
 
 #def inventario(request):
-    return render(request, 'BodegaInventarioApp/inventario.html')
+#    return render(request, 'BodegaInventarioApp/inventario.html')
 
 def reportes(request):
     return render(request, 'BodegaInventarioApp/reportes.html')

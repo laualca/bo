@@ -23,7 +23,14 @@
     <h1 class="site-heading text-center text-white d-none d-lg-block">
         <span class="site-heading-lower">Bodega de Inventario - COPECO</span>
     </h1>
-
+<!--    <div style="text-align: right; margin-right: 100px; color: white;">
+        {% if user.is_autenticated %}
+        Hola {{ user.username }}
+        {% else %}
+        No Autenticado
+        {% endif %}
+    </div>
+-->
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
         <div class="container">
@@ -47,7 +54,7 @@
                         <a class="nav-link text-uppercase text-expanded" href="{% url 'Reportes' %}">Reportes</a>
                     </li>
                     <li class="nav-item {% if request.path == '/transacciones/' %}active{% endif %} px-lg-4">
-                        <a class="nav-link text-uppercase text-expanded" href="{% url 'Transacciones' %}">Transacciones</a>
+                        <a class="nav-link text-uppercase text-expanded" href="{% url 'Transacciones' %}">Inventario Inicial</a>
                     </li>
                 </ul>
             </div>
